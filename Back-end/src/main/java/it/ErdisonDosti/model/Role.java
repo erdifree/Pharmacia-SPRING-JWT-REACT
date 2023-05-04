@@ -1,4 +1,4 @@
-package com.alibou.security.user;
+package it.ErdisonDosti.model;
 
 
 import lombok.RequiredArgsConstructor;
@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public enum Role {
+    USER,
+    Admin
 
 
 }

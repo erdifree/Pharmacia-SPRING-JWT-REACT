@@ -1,4 +1,4 @@
-package com.alibou.security.user;
+package it.ErdisonDosti.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

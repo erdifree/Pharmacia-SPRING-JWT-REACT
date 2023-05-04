@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ST" type="Application" factoryName="Application">
+    <option name="ALTERNATIVE_JRE_PATH" value="17" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <envs>
+      <env name="MYSQL_HOST" value="127.0.0.1" />
+      <env name="MYPORT" value="3306" />
+      <env name="MYDATABASE" value="pharmaciarestdb" />
+      <env name="MYUSER" value="root" />
+      <env name="MYPSW" value="" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="it.ErdisonDosti.SpringWebApplication" />
+    <module name="Pharmacia" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
