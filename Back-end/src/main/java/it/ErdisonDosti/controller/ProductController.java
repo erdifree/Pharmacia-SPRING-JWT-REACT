@@ -4,12 +4,13 @@ package it.ErdisonDosti.controller;
 import it.ErdisonDosti.dto.ProductDTO;
 import it.ErdisonDosti.service.Productservice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/ap1/v1/product")
+@RequestMapping("/ap1/v1/prodotto")
 @CrossOrigin
 public class ProductController extends AbstractController<ProductDTO> {
     @Autowired
@@ -20,6 +21,8 @@ public class ProductController extends AbstractController<ProductDTO> {
     public Iterable<ProductDTO> getAllProduct() {
         return productservice.getAllProduct();
     }
+
+
 
     //Read a product by id
     @GetMapping("/{id}")
