@@ -1,4 +1,4 @@
-package it.ErdisonDosti.model;
+package it.ErdisonDosti.entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

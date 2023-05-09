@@ -1,4 +1,4 @@
-package it.ErdisonDosti.model;
+package it.ErdisonDosti.entity;
 
 
 import jakarta.persistence.*;
@@ -22,7 +22,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
     @NotNull
     @Column(name = "product_name")
     private String name;

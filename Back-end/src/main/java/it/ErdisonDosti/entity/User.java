@@ -1,6 +1,8 @@
-package it.ErdisonDosti.model;
+package it.ErdisonDosti.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,13 +27,15 @@ public class User implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String firstname;
-  private String lastname;
   private String email;
   private String password;
 
   @Enumerated(EnumType.STRING)
   private Role role;
+
+  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+  @JsonBackReference
+  private RegisterUser registeruser;
 
 
   @Override

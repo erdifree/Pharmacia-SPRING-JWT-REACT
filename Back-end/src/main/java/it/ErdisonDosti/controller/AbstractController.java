@@ -31,7 +31,7 @@ public abstract class AbstractController <DTO>{
 	}
 	
 	@DeleteMapping("/delete")
-	public void delete(@RequestParam("id") long id) {
+	public void delete(@RequestParam("id") Integer id) {
 		service.delete(id);
 	}
 	
@@ -48,7 +48,7 @@ public abstract class AbstractController <DTO>{
 	}
 	
 	@GetMapping("/read")
-	public DTO read(long id) {
+	public DTO read(Integer id) {
 		return service.read(id);
 	}
 }

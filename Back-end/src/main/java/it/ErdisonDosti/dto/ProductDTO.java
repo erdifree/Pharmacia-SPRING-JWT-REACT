@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 @Builder
 public class ProductDTO {
-    private long id;
+    private Integer id;
     private String name;
     private String typeProduct;
     private String codeProduct;

@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/ap1/v1/prodotto")
 @CrossOrigin
+
 public class ProductController extends AbstractController<ProductDTO> {
     @Autowired
     private Productservice productservice;
@@ -26,13 +27,13 @@ public class ProductController extends AbstractController<ProductDTO> {
 
     //Read a product by id
     @GetMapping("/{id}")
-    public ProductDTO read(@PathVariable Long id) {
+    public ProductDTO read(@PathVariable Integer id) {
         return productservice.findProduct(id);
     }
 
     //Delite a product by ID
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         productservice.deleteProductById(id);
     }
 

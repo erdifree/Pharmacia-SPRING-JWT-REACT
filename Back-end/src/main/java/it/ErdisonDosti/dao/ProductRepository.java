@@ -1,7 +1,8 @@
 package it.ErdisonDosti.dao;
 
 
-import it.ErdisonDosti.model.Product;
+
+import it.ErdisonDosti.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,15 +14,15 @@ import java.util.List;
 
 @Repository
 @Transactional
-public interface ProductRepository extends JpaRepository<Product,Long> {
+public interface ProductRepository extends JpaRepository<Product,Integer> {
     @Query(value = "SELECT * FROM PRODUCT p ", nativeQuery = true)
     Iterable<Product> findAllProduct();
     @Query(value = "SELECT * FROM product WHERE id = :productId", nativeQuery = true)
-    Product findProductById(@Param("productId") Long productId);
+    Product findProductById(@Param("productId") Integer productId);
 
     @Modifying
     @Query(value = "DELETE FROM product WHERE id = :idtodelete", nativeQuery = true)
-    void deleteProductById(@Param("idtodelete") Long productId);
+    void deleteProductById(@Param("idtodelete") Integer productId);
 
     List<Product> findByNameContainingIgnoreCaseOrTypeProductContainingIgnoreCase(String name, String type);
 

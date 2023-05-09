@@ -2,7 +2,8 @@ package it.ErdisonDosti.service;
 
 import it.ErdisonDosti.dao.ProductRepository;
 import it.ErdisonDosti.dto.ProductDTO;
-import it.ErdisonDosti.model.Product;
+
+import it.ErdisonDosti.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +14,12 @@ public class Productservice extends AbstractService<Product,ProductDTO> {
 
     @Autowired
    private ProductRepository productRepository;
-    public ProductDTO findProduct(Long id) {
+    public ProductDTO findProduct(Integer id) {
         return converter.toDTO(((ProductRepository)repository).findProductById(id));
     }
 
-    public void deleteProductById(Long id) {
+    public void deleteProductById(Integer id) {
+
         ((ProductRepository)repository).deleteProductById(id);
     }
 

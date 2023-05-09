@@ -5,8 +5,9 @@ import it.ErdisonDosti.Config.AuthenticateRequest;
 import it.ErdisonDosti.Config.AuthenticationResponse;
 import it.ErdisonDosti.Config.RegisterRequest;
 import it.ErdisonDosti.dao.UserRepository;
-import it.ErdisonDosti.model.Role;
-import it.ErdisonDosti.model.User;
+import it.ErdisonDosti.entity.Role;
+
+import it.ErdisonDosti.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,11 +27,10 @@ public class AuthenticationService {
     public AuthenticationResponse register(RegisterRequest request) {
 
         var user= User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
+                .role(request.getRole())
+                .registeruser(request.getRegisterUser())
                 .build();
         repository.save(user);
 

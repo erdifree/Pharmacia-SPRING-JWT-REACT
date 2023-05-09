@@ -1,28 +1,31 @@
 package it.ErdisonDosti.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.data.repository.CrudRepository;
-
 import it.ErdisonDosti.converter.Converter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.jmx.export.annotation.ManagedResource;
 
 
 /**
  * Questa classe astratta implementa tutti i metodi CRUD firmati in ServiceDTO.
  * Il converter agisce due volte nei metodi  insert e update per avere sia come input che come output
  * un oggetto DTO.
- * 
- * @author Vittorio Valent & Girolamo Murdaca
- *
  * @param <Entity>
  * @param <DTO>
  * 
  * @see ServiceDTO
  */
+
+
+
 public abstract class AbstractService<Entity,DTO> implements ServiceDTO<DTO> {
 	
+
 	@Autowired
-	protected CrudRepository<Entity,Long> repository;
+	protected CrudRepository<Entity,Integer> repository;
 	@Autowired
 	protected Converter<Entity,DTO> converter;
 	
@@ -32,12 +35,13 @@ public abstract class AbstractService<Entity,DTO> implements ServiceDTO<DTO> {
 	}
 
 	@Override
+
 	public Iterable<DTO> getAll() {
 		return converter.toDTOList(repository.findAll());
 	}
 
 	@Override
-	public DTO read(long id) {
+	public DTO read(Integer id) {
 		return converter.toDTO(repository.findById(id).get());
 	}
 
@@ -47,7 +51,7 @@ public abstract class AbstractService<Entity,DTO> implements ServiceDTO<DTO> {
 	}
 
 	@Override
-	public void delete(long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 }

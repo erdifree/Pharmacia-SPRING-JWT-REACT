@@ -1,7 +1,8 @@
 package it.ErdisonDosti.converter;
 
 import it.ErdisonDosti.dto.ProductDTO;
-import it.ErdisonDosti.model.Product;
+
+import it.ErdisonDosti.entity.Product;
 import org.springframework.stereotype.Component;
 
 @Component
