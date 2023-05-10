@@ -13,6 +13,7 @@ import java.util.List;
 public class Productservice extends AbstractService<Product,ProductDTO> {
 
     @Autowired
+
    private ProductRepository productRepository;
     public ProductDTO findProduct(Integer id) {
         return converter.toDTO(((ProductRepository)repository).findProductById(id));

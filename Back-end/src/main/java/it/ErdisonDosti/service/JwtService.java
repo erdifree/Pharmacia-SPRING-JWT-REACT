@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import it.ErdisonDosti.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -80,6 +81,13 @@ public class JwtService {
     private Key getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
+    }
+
+
+    public String generateRefreshToken(
+            UserDetails userDetails
+    ) {
+        return generateToken(new HashMap<>(), userDetails);
     }
 
 

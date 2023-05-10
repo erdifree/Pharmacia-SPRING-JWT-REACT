@@ -20,7 +20,7 @@ private RegisterUserRepository repository;
 @Autowired
     RegisterUserConverter converter;
 
-    @PreAuthorize("hasAuthority('admin:read')")
+
     public Iterable<RegisterUserDto> getAll() {
 
         return converter.toDTOList(repository.findAll());

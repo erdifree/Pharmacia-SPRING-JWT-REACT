@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ap1/v1/prodotto")
+@RequestMapping("/api/v1/managment/prodotto")
 @CrossOrigin
 
 public class ProductController extends AbstractController<ProductDTO> {

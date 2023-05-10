@@ -3,6 +3,7 @@ package it.ErdisonDosti.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import it.ErdisonDosti.Token.Token;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,10 +38,13 @@ public class User implements UserDetails {
   @JsonBackReference
   private RegisterUser registeruser;
 
+  @OneToMany(mappedBy = "user")
+  private List<Token> tokens;
+
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of(new SimpleGrantedAuthority(role.name()));
+    return role.getAuthorities();
   }
 
   @Override
