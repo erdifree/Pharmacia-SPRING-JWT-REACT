@@ -1,5 +1,6 @@
 package it.ErdisonDosti;
 
+import com.github.javafaker.Faker;
 import it.ErdisonDosti.Config.RegisterRequest;
 ;
 import it.ErdisonDosti.service.AuthenticationService;
@@ -25,6 +26,11 @@ public class SpringWebApplication {
 		SpringApplication.run(SpringWebApplication.class, args);
 	}
 
+//@Bean
+//	Faker faker(){
+//		return  new Faker();
+//}
+
 
 //	@Bean
 //	public CommandLineRunner commandLineRunner(AuthenticationService service){
@@ -38,6 +44,16 @@ public class SpringWebApplication {
 //					.build();
 //
 //			System.out.printf("Admin token:"+ service.register(admin).getAccessToken());
+//
+//			var admin2 = RegisterRequest
+//					.builder()
+//					.email("admin2@zerodd.com")
+//					.password("1234")
+//					.role(ADMIN)
+//					.build();
+//
+//			System.out.printf("Admin token:"+ service.register(admin2).getAccessToken());
+//
 //
 //			var manager = RegisterRequest
 //					.builder()

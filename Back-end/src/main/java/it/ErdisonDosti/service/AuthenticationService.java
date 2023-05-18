@@ -23,6 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -52,6 +53,8 @@ public class AuthenticationService {
                 .accessToken(jwtToken)
                 .build();
     }
+
+
 
     private void saveUserToken(User user, String jwtToken) {
         var token = Token.builder()

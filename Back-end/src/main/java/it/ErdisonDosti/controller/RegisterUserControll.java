@@ -10,16 +10,12 @@ import it.ErdisonDosti.service.RegisterUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/admin/registeruser")
 @CrossOrigin
-
-public class RegisterUserControll  {
+public class RegisterUserControll {
 
     @Autowired
      private RegisterUserService service;
@@ -28,5 +24,10 @@ public class RegisterUserControll  {
     @GetMapping
     public Iterable<RegisterUserDto> getAll() {
         return service.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public RegisterUserDto getRegisterUserById(@PathVariable Integer id){
+        return service.getRegisterUserById(id);
     }
 }

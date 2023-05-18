@@ -24,7 +24,7 @@ public class RegisterUserConverter extends AbstractConverter<RegisterUser,Regist
                     .country(registerUserDto.getCountry())
                     .address(registerUserDto.getAddress())
                     .zipCode(registerUserDto.getZipCode())
-                    .user(registerUserDto.getUser())
+
                     .build();
         }
         return registerUser;
@@ -46,9 +46,35 @@ public class RegisterUserConverter extends AbstractConverter<RegisterUser,Regist
                     .country(registerUser.getCountry())
                     .address(registerUser.getAddress())
                     .zipCode(registerUser.getZipCode())
-                    .user(registerUser.getUser())
+
                     .build();
         }
         return registerUserDto;
     }
+
+
+
+    public RegisterUserDto toDTOAndOrders(RegisterUser registerUser) {
+        RegisterUserDto registerUserDto=null;
+        if (registerUser == null) {
+            throw  new RuntimeException("No RegisterUserDTO find");
+        }else {
+            registerUserDto=RegisterUserDto
+                    .builder()
+                    .id(registerUser.getId())
+                    .name(registerUser.getName())
+                    .lastname(registerUser.getLastname())
+                    .dob(registerUser.getDob())
+                    .city(registerUser.getCity())
+                    .country(registerUser.getCountry())
+                    .address(registerUser.getAddress())
+                    .zipCode(registerUser.getZipCode())
+
+                    .build();
+        }
+        return registerUserDto;
+    }
+
+
+
 }

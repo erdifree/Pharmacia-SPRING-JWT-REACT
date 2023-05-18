@@ -1,7 +1,6 @@
 package it.ErdisonDosti.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Data
 @Builder
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class RegisterUser {
 
     @Id
@@ -38,8 +40,13 @@ public class RegisterUser {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
+    @JsonIgnore
     private User user;
+
+
+//    @OneToMany(mappedBy = "registered_user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    private List<Orders> orders = new ArrayList<>();
 
 
 

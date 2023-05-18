@@ -4,9 +4,11 @@ package it.ErdisonDosti.controller;
 import it.ErdisonDosti.dto.ProductDTO;
 import it.ErdisonDosti.service.Productservice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -23,7 +25,10 @@ public class ProductController extends AbstractController<ProductDTO> {
         return productservice.getAllProduct();
     }
 
-
+    @GetMapping("/paginable")
+    public Page<ProductDTO> getPageProduct() {
+        return productservice.getPageProduct();
+    }
 
     //Read a product by id
     @GetMapping("/{id}")

@@ -1,8 +1,7 @@
 package it.ErdisonDosti.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import it.ErdisonDosti.Token.Token;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -22,7 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
-
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class User implements UserDetails {
 
   @Id
@@ -35,8 +33,11 @@ public class User implements UserDetails {
   private Role role;
 
   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-  @JsonBackReference
   private RegisterUser registeruser;
+
+  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+  @JsonManagedReference
+  private Pharmacy pharmacia;
 
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;
